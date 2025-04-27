@@ -28,6 +28,18 @@ function PlantPage() {
     setPlants(updatedPlants);
   }
 
+  function handleUpdatePlant(updatedPlant) {
+    const updatedPlants = plants.map((plant) =>
+      plant.id === updatedPlant.id ? updatedPlant : plant
+    );
+    setPlants(updatedPlants);
+  }
+
+  function handleDeletePlant(deletedPlantId) {
+    const updatedPlants = plants.filter((plant) => plant.id !== deletedPlantId);
+    setPlants(updatedPlants);
+  }
+
   const plantsToDisplay = plants.filter((plant) =>
     plant.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -36,7 +48,12 @@ function PlantPage() {
     <main>
       <NewPlantForm onAddPlant={handleAddPlant} />
       <Search searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-      <PlantList plants={plantsToDisplay} onToggleSoldOut={handleToggleSoldOut} />
+      <PlantList
+        plants={plantsToDisplay}
+        onToggleSoldOut={handleToggleSoldOut}
+        onUpdatePlant={handleUpdatePlant}
+        onDeletePlant={handleDeletePlant}
+      />
     </main>
   );
 }
