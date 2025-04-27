@@ -18,17 +18,15 @@ function NewPlantForm({ onAddPlant }) {
     fetch("http://localhost:6001/plants", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "Application/JSON", // Capitalized exactly like this
       },
-      body: JSON.stringify(newPlant),
+      body: JSON.stringify({
+        name: name,
+        image: image,
+        price: price.toString(), // Force price to string
+      }),
     })
-      .then((r) => r.json())
-      .then((plant) => {
-        onAddPlant(plant);
-        setName("");
-        setImage("");
-        setPrice("");
-      });
+    
   }
 
   return (

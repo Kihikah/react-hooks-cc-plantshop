@@ -30,7 +30,7 @@ function PlantCard({ plant, onToggleSoldOut, onUpdatePlant, onDeletePlant }) {
     <li className="card" data-testid="plant-item">
       <img src={image} alt={name} />
       <h4>{name}</h4>
-      <p>Price: ${price}</p>
+      <p>Price: {price}</p>
 
       <form onSubmit={handlePriceSubmit}>
         <input
